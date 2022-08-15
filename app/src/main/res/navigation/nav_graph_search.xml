@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_search"
+    app:startDestination="@id/suggestionsFragment">
+
+    <fragment
+        android:id="@+id/suggestionsFragment"
+        android:name="com.luz.melisearch.ui.search.SuggestionsFragment"
+        android:label="@string/suggestions_fragment_label"
+        tools:layout="@layout/fragment_suggestions">
+
+        <action
+            android:id="@+id/action_SuggestionsFragment_to_ResultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.luz.melisearch.ui.search.ResultsFragment"
+        android:label="@string/results_fragment_label"
+        tools:layout="@layout/fragment_results">
+
+        <action
+            android:id="@+id/action_ResultsFragment_to_SuggestionsFragment"
+            app:destination="@id/suggestionsFragment" />
+
+        <argument
+            android:name="keyword"
+            app:argType="string"
+            app:nullable="false"/>
+    </fragment>
+</navigation>

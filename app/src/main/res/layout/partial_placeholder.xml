@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.36" />
+
+        <ImageView
+            android:id="@+id/ivPlaceholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_placeholder"
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintWidth_percent="0.5"
+            app:tint="?colorOnBackground" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="?colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline" />
+
+        <TextView
+            android:id="@+id/tvPlaceholderTitle"
+            style="@style/PlaceholderTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_title"
+            app:layout_constraintEnd_toEndOf="@id/ivPlaceholder"
+            app:layout_constraintStart_toStartOf="@id/ivPlaceholder"
+            app:layout_constraintTop_toBottomOf="@id/ivPlaceholder" />
+
+        <TextView
+            android:id="@+id/tvPlaceholderMessage"
+            style="@style/PlaceholderContentTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/error_default_message"
+            app:layout_constraintEnd_toEndOf="@id/ivPlaceholder"
+            app:layout_constraintStart_toStartOf="@id/ivPlaceholder"
+            app:layout_constraintTop_toBottomOf="@id/tvPlaceholderTitle" />
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPlaceholderMessage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

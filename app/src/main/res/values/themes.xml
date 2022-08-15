@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MeliSearch" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primaryLightColor</item>
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryLightColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryColor</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="colorOnBackground">@color/onBackgroundLightColor</item>
+        <item name="colorPrimaryInverse">@color/primaryLightTextColor</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.MeliSearch.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MeliSearch.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MeliSearch.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="PlaceholderTitleTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/primaryLightTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_big_0_size</item>
+    </style>
+
+    <style name="PlaceholderContentTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/secondaryLightTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_medium_0_size</item>
+        <item name="android:paddingTop">@dimen/dimen_small_0_size</item>
+        <item name="android:paddingBottom">@dimen/dimen_small_0_size</item>
+    </style>
+</resources>

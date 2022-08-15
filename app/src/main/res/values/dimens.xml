@@ -1,0 +1,22 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_padding">16dp</dimen>
+    <dimen name="app_bar_size_menu_item">24dp</dimen>
+
+    <dimen name="text_small_size">12sp</dimen>
+    <dimen name="text_medium_0_size">14sp</dimen>
+    <dimen name="text_medium_1_size">16sp</dimen>
+    <dimen name="text_big_0_size">24sp</dimen>
+    <dimen name="text_big_1_size">36sp</dimen>
+
+    <dimen name="margin_app">20dp</dimen>
+
+    <dimen name="dimen_small_0_size">1dp</dimen>
+    <dimen name="dimen_small_1_size">4dp</dimen>
+    <dimen name="dimen_small_2_size">6dp</dimen>
+    <dimen name="dimen_medium_0_size">10dp</dimen>
+    <dimen name="dimen_medium_1_size">14dp</dimen>
+    <dimen name="dimen_big_0_size">21dp</dimen>
+    <dimen name="dimen_big_1_size">32dp</dimen>
+    <dimen name="dimen_big_2_size">64dp</dimen>
+</resources>

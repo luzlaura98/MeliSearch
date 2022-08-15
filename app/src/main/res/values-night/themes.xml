@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MeliSearch" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primaryDarkColor</item>
+        <item name="colorPrimaryVariant">@color/primaryColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryDarkColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryColor</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primaryColor</item>
+        <!-- Customize your theme here. -->
+        <item name="colorOnBackground">@color/onBackgroundDarkColor</item>
+        <item name="colorPrimaryInverse">@color/primaryDarkTextColor</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="PlaceholderTitleTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/primaryLightTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_big_0_size</item>
+    </style>
+
+    <style name="PlaceholderContentTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/secondaryLightTextColor</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_medium_0_size</item>
+        <item name="android:paddingTop">@dimen/dimen_small_0_size</item>
+        <item name="android:paddingBottom">@dimen/dimen_small_0_size</item>
+    </style>
+</resources>
