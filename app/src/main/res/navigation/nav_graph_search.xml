@@ -10,10 +10,6 @@
         android:name="com.luz.melisearch.ui.search.suggestions.SuggestionsFragment"
         android:label="@string/suggestions_fragment_label"
         tools:layout="@layout/fragment_suggestions">
-
-        <action
-            android:id="@+id/action_SuggestionsFragment_to_ResultsFragment"
-            app:destination="@id/resultsFragment" />
     </fragment>
 
     <fragment
@@ -21,18 +17,19 @@
         android:name="com.luz.melisearch.ui.search.results.ResultsFragment"
         android:label="@string/results_fragment_label"
         tools:layout="@layout/fragment_results">
-
-        <action
-            android:id="@+id/action_ResultsFragment_to_SuggestionsFragment"
-            app:destination="@id/suggestionsFragment" />
-
         <argument
             android:name="keyword"
             app:argType="string"
-            app:nullable="false"/>
+            app:nullable="false" />
     </fragment>
 
     <action
         android:id="@+id/action_to_ResultsFragment"
-        app:destination="@id/resultsFragment"/>
+        app:destination="@id/resultsFragment" />
+
+    <action
+        android:id="@+id/action_to_SuggestionsFragment"
+        app:destination="@id/suggestionsFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/suggestionsFragment" />
 </navigation>
