@@ -7,7 +7,6 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
-import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
@@ -17,15 +16,17 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import com.luz.melisearch.R
 import com.luz.melisearch.databinding.ActivitySearchBinding
-import com.luz.melisearch.ui.adapters.SuggestionAdapter
 import com.luz.melisearch.ui.base.BaseActivity
 import com.luz.melisearch.ui.search.OnClickSuggestionListener
-import com.luz.melisearch.ui.search.SuggestionsFragment
+import com.luz.melisearch.ui.search.results.ResultsFragment
+import com.luz.melisearch.ui.search.suggestions.SuggestionsFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
  * Created by Luz on 13/8/2022.
  */
+@AndroidEntryPoint
 class SearchActivity : BaseActivity(), OnClickSuggestionListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -151,8 +152,8 @@ class SearchActivity : BaseActivity(), OnClickSuggestionListener {
 
     private fun search(query: String) {
         findNavController(R.id.nav_host_fragment_content_search).navigate(
-            R.id.action_SuggestionsFragment_to_ResultsFragment,
-            bundleOf("keyword" to query)
+            R.id.action_to_ResultsFragment,
+            bundleOf(ResultsFragment.EXTRA_KEYWORD to query)
         )
     }
 

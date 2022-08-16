@@ -3,28 +3,29 @@
 
     <!--Placeholder-->
     <string name="placeholder_title">¡Ups!</string>
-    <string name="no_results">Nothing here</string>
-    <string name="retry_">Retry</string>
+    <string name="no_results">Nada por aquí</string>
+    <string name="retry_">Reintentar</string>
     <string name="ok_">OK</string>
 
     <!-- Error -->
-    <string name="error_internet">No internet connection</string>
-    <string name="error_time_out">The connection has timed out</string>
-    <string name="error_default_message">Something was wrong</string>
+    <string name="error_internet">Parece que no hay internet</string>
+    <string name="error_time_out">La conexión ha expirado</string>
+    <string name="error_default_message">Algo falló</string>
 
-    <string name="action_settings">Settings</string>
-
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
-    <string name="suggestions_fragment_label">Suggestions Fragment</string>
-    <string name="results_fragment_label">Results Fragment</string>
+    <!-- Search -->
     <string name="search_title">Buscar</string>
     <string name="clear_history_title">Limpiar historial</string>
     <string name="search_hint">Buscar items</string>
+    <string name="item">Item</string>
+    <string name="suggestions_fragment_label">Suggestions Fragment</string>
+    <string name="results_fragment_label">Results Fragment</string>
+
+    <!--Item Detail-->
+    <string name="item_detail_title">Producto</string>
+    <string name="text_share_item">Comparte este producto</string>
+    <plurals name="soldCount">
+        <item formatted="true" quantity="one">%d vendidos</item>
+        <item formatted="true" quantity="other">%d vendidos</item>
+    </plurals>
+
 </resources>

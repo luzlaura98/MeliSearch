@@ -1,4 +1,4 @@
-package com.luz.melisearch.ui.search
+package com.luz.melisearch.ui.search.suggestions
 
 import android.database.Cursor
 import android.os.Bundle
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.luz.melisearch.R
 import com.luz.melisearch.databinding.FragmentSuggestionsBinding
 import com.luz.melisearch.ui.adapters.SuggestionAdapter
+import com.luz.melisearch.ui.search.OnClickSuggestionListener
 
 /**
  * Created by Luz on 15/8/2022.

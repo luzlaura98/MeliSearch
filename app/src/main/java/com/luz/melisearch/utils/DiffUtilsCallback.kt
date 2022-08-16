@@ -1,4 +1,4 @@
-package com.luz.melisearch.util
+package com.luz.melisearch.utils
 
 import androidx.recyclerview.widget.DiffUtil
 

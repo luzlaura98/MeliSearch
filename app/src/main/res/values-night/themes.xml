@@ -32,4 +32,5 @@
         <item name="android:paddingTop">@dimen/dimen_small_0_size</item>
         <item name="android:paddingBottom">@dimen/dimen_small_0_size</item>
     </style>
+
 </resources>

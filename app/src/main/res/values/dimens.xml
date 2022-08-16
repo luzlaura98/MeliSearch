@@ -3,9 +3,13 @@
     <dimen name="app_bar_padding">16dp</dimen>
     <dimen name="app_bar_size_menu_item">24dp</dimen>
 
+    <dimen name="card_height">110dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+
     <dimen name="text_small_size">12sp</dimen>
     <dimen name="text_medium_0_size">14sp</dimen>
-    <dimen name="text_medium_1_size">16sp</dimen>
+    <dimen name="text_medium_1_size">17sp</dimen>
     <dimen name="text_big_0_size">24sp</dimen>
     <dimen name="text_big_1_size">36sp</dimen>
 

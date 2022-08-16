@@ -41,4 +41,10 @@
         <item name="android:paddingTop">@dimen/dimen_small_0_size</item>
         <item name="android:paddingBottom">@dimen/dimen_small_0_size</item>
     </style>
+
+    <style name="SoldStyleTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/secondaryLightTextColor</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textSize">@dimen/text_medium_0_size</item>
+    </style>
 </resources>

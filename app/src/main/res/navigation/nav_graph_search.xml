@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/suggestionsFragment"
-        android:name="com.luz.melisearch.ui.search.SuggestionsFragment"
+        android:name="com.luz.melisearch.ui.search.suggestions.SuggestionsFragment"
         android:label="@string/suggestions_fragment_label"
         tools:layout="@layout/fragment_suggestions">
 
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/resultsFragment"
-        android:name="com.luz.melisearch.ui.search.ResultsFragment"
+        android:name="com.luz.melisearch.ui.search.results.ResultsFragment"
         android:label="@string/results_fragment_label"
         tools:layout="@layout/fragment_results">
 
@@ -31,4 +31,8 @@
             app:argType="string"
             app:nullable="false"/>
     </fragment>
+
+    <action
+        android:id="@+id/action_to_ResultsFragment"
+        app:destination="@id/resultsFragment"/>
 </navigation>

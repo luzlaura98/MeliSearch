@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.luz.melisearch.databinding.ItemSuggestionBinding
 import com.luz.melisearch.ui.search.OnClickSuggestionListener
-import com.luz.melisearch.util.DiffStringCallback
+import com.luz.melisearch.utils.DiffStringCallback
 
 /**
  * Created by Luz on 15/8/2022.
@@ -39,7 +39,7 @@ class SuggestionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         items.clear()
         items.addAll(newItems)
-        diffResult.dispatchUpdatesTo(this)
+        diffResult.dispatchUpdatesTo(this) // Notify changes
     }
 
     private class SuggestionViewHolder(
