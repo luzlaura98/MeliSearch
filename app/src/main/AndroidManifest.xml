@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MeliSearch"
         tools:targetApi="n">
         <activity
-            android:name=".ui.SearchActivity"
+            android:name=".ui.search.SearchActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/Theme.MeliSearch.NoActionBar">
@@ -35,8 +35,8 @@
         <activity android:name=".ui.itemDetail.ItemDetailActivity" />
 
         <provider
-            android:name=".ui.MySuggestionProvider"
-            android:authorities="com.luz.melisearch.ui.MySuggestionProvider"
+            android:name=".ui.search.MySuggestionProvider"
+            android:authorities="com.luz.melisearch.ui.search.MySuggestionProvider"
             android:exported="false" />
     </application>
 

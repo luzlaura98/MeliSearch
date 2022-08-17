@@ -39,7 +39,8 @@ class PagingUtils(
     /**
      * @return nextPage. If current page is the last page, then the next page should be null.
      * */
-    fun calculateNextPage(currentPage: Int, lastPage: Int): Int? {
+    fun calculateNextPage(currentPage: Int, lastPage: Int?): Int? {
+        if (lastPage == null) return null
         return if (currentPage + 1 <= lastPage) currentPage + 1 else null
     }
 
@@ -52,8 +53,10 @@ class PagingUtils(
      * @param totalItems quantity of items available
      * @return last page
      * */
-    fun calculateLastPage(totalItems: Int): Int {
+    fun calculateLastPage(totalItems: Int): Int? {
         val roundUp = ceil(totalItems / itemsPerPage.toDouble())
+        if (roundUp.toInt() == 0)
+            return null
         return roundUp.toInt() - 1 + firstPage
     }
 }

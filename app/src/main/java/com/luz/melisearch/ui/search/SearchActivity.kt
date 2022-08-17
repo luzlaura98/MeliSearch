@@ -1,4 +1,4 @@
-package com.luz.melisearch.ui
+package com.luz.melisearch.ui.search
 
 import android.app.SearchManager
 import android.content.ContentResolver
@@ -7,17 +7,16 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.luz.melisearch.R
 import com.luz.melisearch.databinding.ActivitySearchBinding
 import com.luz.melisearch.ui.base.BaseActivity
-import com.luz.melisearch.ui.search.OnClickSuggestionListener
 import com.luz.melisearch.ui.search.results.ResultsFragment
 import com.luz.melisearch.ui.search.suggestions.SuggestionsFragment
 import com.luz.melisearch.utils.hideKeyboard
@@ -32,21 +31,25 @@ class SearchActivity : BaseActivity(), OnClickSuggestionListener {
 
     private lateinit var binding: ActivitySearchBinding
 
-    private var suggestionsFragment: SuggestionsFragment? = null
+    val viewModel by viewModels<SearchViewModel>()
+
     private var searchView: SearchView? = null
 
-    private var lastQuery : String? = null
+    private val navHostFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_search)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_search, menu)
         searchView = (menu.findItem(R.id.search).actionView as? SearchView)
         searchView?.init()
+        viewModel.lastQuery?.let { searchView?.setQuery(it, false) }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.clearSuggestions) {
-            clearHistorySuggestions()
+            viewModel.clearHistorySuggestions()
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -61,28 +64,12 @@ class SearchActivity : BaseActivity(), OnClickSuggestionListener {
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.title = ""
 
+        // Listener for onClickSuggestion
+        (navHostFragment?.childFragmentManager?.fragments?.get(0) as? SuggestionsFragment)?.apply {
+            setOnClickSuggestionListener(this@SearchActivity)
+        }
+
         handleIntent(intent)
-
-        val navHostFragment: Fragment? =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_search)
-        suggestionsFragment =
-            navHostFragment?.childFragmentManager?.fragments?.get(0) as? SuggestionsFragment
-        suggestionsFragment?.setOnClickSuggestionListener(this)
-    }
-
-    // Function To Retrieve Suggestion From Content Resolver
-    fun getRecentSuggestions(query: String): Cursor? {
-        val uriBuilder = Uri.Builder()
-            .scheme(ContentResolver.SCHEME_CONTENT)
-            .authority(MySuggestionProvider.AUTHORITY)
-
-        uriBuilder.appendPath(SearchManager.SUGGEST_URI_PATH_QUERY)
-
-        val selection = " ?"
-        val selArgs = arrayOf(query)
-
-        val uri = uriBuilder.build()
-        return contentResolver?.query(uri, null, selection, selArgs, null)
     }
 
     private fun SearchView.init() {
@@ -96,57 +83,25 @@ class SearchActivity : BaseActivity(), OnClickSuggestionListener {
         setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (!query.isNullOrBlank()) {
-                    saveQueryToHistory(query)
+                    viewModel.saveQueryToHistory(query)
                     search(query)
-                    hideKeyboard()
                 }
                 return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                lastQuery = query
-                val navHost =
-                    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_search)
-                if (navHost?.childFragmentManager?.fragments?.firstOrNull() != suggestionsFragment) {
-                    findNavController(R.id.nav_host_fragment_content_search)
-                        .navigate(R.id.action_to_SuggestionsFragment)
-                }
+                viewModel.lastQuery = query
+                backToSuggestionsIfNecessary()
                 if (!query.isNullOrBlank()) {
-                    getRecentSuggestions(query)?.let { showSuggestions(it) }
+                    viewModel.loadSuggestions(query)
                 } else {
-                    clearSuggestions()
+                    viewModel.clearSuggestions()
                 }
                 return false
             }
         })
 
         setOnCloseListener { false }
-
-        lastQuery?.let {
-            setQuery(it, false)
-        }
-    }
-
-    private fun showSuggestions(cursor: Cursor) {
-        suggestionsFragment?.showSuggestions(cursor)
-    }
-
-    private fun clearSuggestions() {
-        suggestionsFragment?.clearSuggestions()
-    }
-
-    private fun saveQueryToHistory(query: String) {
-        SearchRecentSuggestions(
-            this,
-            MySuggestionProvider.AUTHORITY,
-            MySuggestionProvider.MODE
-        )
-            .saveRecentQuery(query, null)
-    }
-
-    private fun clearHistorySuggestions() {
-        SearchRecentSuggestions(this, MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE)
-            .clearHistory()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -158,16 +113,28 @@ class SearchActivity : BaseActivity(), OnClickSuggestionListener {
     private fun handleIntent(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             intent.getStringExtra(SearchManager.QUERY)?.also { query ->
-                saveQueryToHistory(query)
+                viewModel.saveQueryToHistory(query)
                 search(query)
             }
         }
     }
 
+    /**
+     * If current fragment is [SuggestionsFragment], no need to navigate to that fragment.
+     * */
+    private fun backToSuggestionsIfNecessary(){
+        if (navHostFragment?.childFragmentManager?.fragments?.firstOrNull() !is SuggestionsFragment) {
+            findNavController(R.id.nav_host_fragment_content_search)
+                .navigate(R.id.action_to_SuggestionsFragment)
+        }
+    }
+
     private fun search(query: String) {
-        lastQuery = query
+        viewModel.lastQuery = query
+        hideKeyboard()
+
         findNavController(R.id.nav_host_fragment_content_search).navigate(
-            R.id.resultsFragment, //action //resultsFragment
+            R.id.resultsFragment,
             bundleOf(ResultsFragment.EXTRA_KEYWORD to query)
         )
     }

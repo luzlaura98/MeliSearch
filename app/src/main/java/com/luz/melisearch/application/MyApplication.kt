@@ -1,4 +1,4 @@
-package com.luz.melisearch
+package com.luz.melisearch.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

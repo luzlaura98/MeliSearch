@@ -29,7 +29,7 @@ class ItemDetailViewModel @Inject constructor(
 
     /** Saved item detail. It prevents call API to get the data again if there was
      *  called before and app process was killed. */
-    var itemDetail: ItemMeliDetail? = null
+    private var itemDetail: ItemMeliDetail? = null
 
     init {
         val initialState = state.get<Bundle?>(SAVED_BUNDLE)

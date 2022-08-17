@@ -53,6 +53,7 @@
             android:id="@+id/tvPlaceholderMessage"
             style="@style/PlaceholderContentTextView"
             android:layout_width="0dp"
+            android:paddingVertical="@dimen/dimen_medium_0_size"
             android:layout_height="wrap_content"
             android:text="@string/error_default_message"
             app:layout_constraintEnd_toEndOf="@id/ivPlaceholder"

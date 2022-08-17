@@ -22,6 +22,11 @@ class PlaceholderManager(
         views = list
     }
 
+    /**
+     * [PartialPlaceholderBinding] visible or not.
+     * @param isLoading if it is true, shows loading and hides the others views. If it is false,
+     * only shows the [views] declared to hide when placeholder is showed. For example, a recyclerView.
+     * */
     fun showLoading(isLoading: Boolean) {
         with(binding) {
             if (isLoading) {
@@ -39,6 +44,12 @@ class PlaceholderManager(
         }
     }
 
+    /**
+     * [PartialPlaceholderBinding] visible. It shows title, message and retry button (if it is
+     * needed).
+     * @param message message to show. Default message is [R.string.error_default_message].
+     * @param onRetry retry function. If it is null, retry button is not showed.
+     * */
     fun showPlaceholderMessage(message: String?, onRetry: (() -> Unit)?) {
         with(binding) {
             root.isVisible = true

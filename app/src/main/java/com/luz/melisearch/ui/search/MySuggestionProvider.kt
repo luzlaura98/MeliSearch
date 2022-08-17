@@ -1,4 +1,4 @@
-package com.luz.melisearch.ui
+package com.luz.melisearch.ui.search
 
 import android.content.SearchRecentSuggestionsProvider
 
@@ -11,7 +11,7 @@ class MySuggestionProvider : SearchRecentSuggestionsProvider() {
     }
 
     companion object {
-        const val AUTHORITY = "com.luz.melisearch.ui.MySuggestionProvider"
+        const val AUTHORITY = "com.luz.melisearch.ui.search.MySuggestionProvider"
         const val MODE = DATABASE_MODE_QUERIES
     }
 }
